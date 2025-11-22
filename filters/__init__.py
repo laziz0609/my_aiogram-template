@@ -1,8 +1,7 @@
 import importlib
 
 modules = [
-    "start", 
-    "help" ,
+
 ]
 
 routers = []
