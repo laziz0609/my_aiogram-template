@@ -1,14 +1,15 @@
 from aiogram import  types , Router
+import asyncio
 
+router = Router()
 
-roter = Router()
-
-@roter.message()
+@router.message()
 async def echo(message: types.Message):
-    print(message)
     try:
         await message.send_copy(chat_id=message.chat.id)
-    except:
-        await  message.answer("ERROR")
-
+    except TypeError:
+        await message.answer("Nice try!")
+        
+        
+        
 
