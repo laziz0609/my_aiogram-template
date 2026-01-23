@@ -4,6 +4,7 @@ import importlib
 modules = [
     "notify",  
     "stats",
+    "menegement_time_limit_middleware",
 ]
 
 routers = []

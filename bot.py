@@ -1,12 +1,14 @@
+import os
 import asyncio
 import logging
 
-from aiogram import Dispatcher
-from aiogram.fsm.storage.memory import MemoryStorage
+from dotenv import load_dotenv
+from aiogram import Bot
+
 from handlers import routers
-from config import BOT_TOKEN
 from utils.on_startup_notify import on_startup_notify
-from config import BOT, ADMINS
+from config import dp, ADMINS
+from middleware.time_limit_middleware import Time_Limit
 
 logging.basicConfig(level=logging.INFO)
 
@@ -14,12 +16,16 @@ logging.basicConfig(level=logging.INFO)
 
 
 async def main():
-    dp = Dispatcher(storage=MemoryStorage())
+    load_dotenv()
+    BOT_TOKEN = os.getenv("BOT_TOKEN")   
+    BOT = Bot(token=BOT_TOKEN)
+    
+    
 
     # ✅ Routerlarni tartib bilan qo‘shamiz
     for router in routers:
         dp.include_router(router)
-
+    
     print("🚀 Bot ishga tushmoqda...")
     await on_startup_notify(BOT, ADMINS)
     await dp.start_polling(BOT)

@@ -35,7 +35,7 @@ class Time_Limit(BaseMiddleware):
         # user bloklangan yoki yo'qligini tekshiramiz 
         now = datetime.datetime.now()
         if user["block_time"] and user["block_time"] > now:
-            await event.answer(f'siz bloklangansiz {user["block_time"]} da ochilasiz')
+            # await event.answer(f'siz bloklangansiz {user["block_time"]} da ochilasiz')
             return
         
         # user blokdan ochilgan yoki yo'qligini tekshiramiz
@@ -49,7 +49,7 @@ class Time_Limit(BaseMiddleware):
         # so'rovlar limitdan o'tsa userni bloklaymiz
         if len(user["requests"]) >= self.max_requests:
             user["block_time"] = now + datetime.timedelta(seconds=self.block_duration)
-            await event.answer(f'siz bloklandingiz {user["block_time"]} da ochilasiz')
+            # await event.answer(f'siz bloklandingiz {user["block_time"]} da ochilasiz')
             return    
         
         # so'rov callbackquery bo'lsa loadingni o'chirish
