@@ -16,7 +16,7 @@ class AddMiddleware(StatesGroup):
 router = Router()
 
 
-@router.message(Command("add_midleware"))
+@router.message(Command("add_middleware"))
 async def add_router(message: types.Message, state: FSMContext):
         user_id = message.from_user.id
         
