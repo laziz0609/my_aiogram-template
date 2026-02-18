@@ -2,8 +2,6 @@ import importlib
 
 # ❗ Faqat shu ro‘yxatdagi fayllardan routerlar yuklanadi
 modules = [
-    "notify",  
-    "stats",
     "menegement_time_limit_middleware",
 ]
 
